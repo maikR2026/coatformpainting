@@ -1,0 +1,16 @@
+{
+  "name": "coatform-painting-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Coatform Painting — Toronto & GTA painting company website",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node build.mjs && npx --yes serve site -l 4321"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "leaflet": "1.9.4"
+  },
+  "engines": { "node": ">=20" }
+}
