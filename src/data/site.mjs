@@ -24,13 +24,12 @@ export const site = {
     ink: '#0D0D0D',
     cream: '#F3ECE2',
   },
-  // Add your real profile URLs here once they exist (Google Business Profile,
-  // Instagram, TikTok, HomeStars, Facebook...). They are output in the schema
-  // "sameAs" list and in the footer.
+  // Social profiles: shown in the footer and contact page, and output in the
+  // schema "sameAs" list so Google links them to the business.
   social: [
-    // { name: 'Instagram', url: 'https://instagram.com/coatformpainting' },
-    // { name: 'TikTok', url: 'https://tiktok.com/@coatformpainting' },
-    // { name: 'Google', url: 'https://g.page/...' },
+    { name: 'Instagram', handle: '@coatform_painting', url: 'https://www.instagram.com/coatform_painting/' },
+    { name: 'TikTok', handle: '@coatformpaint', url: 'https://www.tiktok.com/@coatformpaint' },
+    { name: 'Facebook', handle: 'Coatform Painting', url: 'https://www.facebook.com/profile.php?id=61594982948533' },
   ],
 };
 

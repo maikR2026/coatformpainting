@@ -9,7 +9,7 @@ import { posts } from './src/data/posts.mjs';
 import { legalPages } from './src/pages/legal.mjs';
 import { SERVICES as ESTIMATOR_SERVICES } from './src/assets/js/pricing.js';
 import {
-  layout, esc, abs, crumbsHtml, ctaBand, faqBlock, serviceCard, quickForm, faqSchema, BUSINESS_ID, cityOptions, serviceOptions, mapEmbed,
+  layout, esc, abs, crumbsHtml, ctaBand, faqBlock, serviceCard, quickForm, faqSchema, BUSINESS_ID, cityOptions, serviceOptions, mapEmbed, socialLinks,
 } from './src/templates.mjs';
 
 const OUT = 'site';
@@ -647,6 +647,9 @@ ${ctaBand(`Ready to paint in ${esc(c.name)}?`)}`;
       <ul class="check-list">${site.hours.map((h) => `<li><strong>${h.days}:</strong> ${h.time}</li>`).join('')}</ul>
       <h2 style="font-size:1.6rem;margin-top:30px">Service area</h2>
       <p class="muted">Toronto & the GTA — <a href="/service-areas/">see all ${cities.length} cities</a>.</p>
+      <h2 style="font-size:1.6rem;margin-top:30px">Follow our work</h2>
+      <p class="muted">Before & afters, colour inspo and behind-the-scenes.</p>
+      ${socialLinks()}
     </div>
   </aside>
 </div></section>

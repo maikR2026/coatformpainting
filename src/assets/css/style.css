@@ -419,6 +419,17 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .footer-bottom ul { display: flex; flex-wrap: wrap; gap: 16px; }
 .footer-word { font: 800 clamp(3rem, 15vw, 13rem)/0.8 var(--font-display); letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.12); margin-top: 60px; white-space: nowrap; overflow: hidden; user-select: none; }
 
+/* social links */
+.socials { display: flex !important; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 24px 0 0; }
+.site-footer .socials { margin-top: 22px; }
+.socials a {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.04); color: var(--text) !important;
+  text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: 0.2s;
+}
+.socials a:hover { background: var(--copper); border-color: var(--copper); transform: translateY(-2px) rotate(-2deg); }
+.section--cream .socials a, .panel--cream .socials a { color: var(--ink-text) !important; border-color: rgba(0,0,0,0.14); background: #fff; }
+
 /* mobile sticky CTA */
 .mobile-cta { display: none; }
 @media (max-width: 760px) {

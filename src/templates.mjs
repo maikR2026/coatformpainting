@@ -92,6 +92,19 @@ export function faqSchema(faqs) {
 const fonts =
   'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap';
 
+const SOCIAL_ICONS = {
+  Instagram: '<path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/>',
+  TikTok: '<path d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.3 6.3 0 1 0 5.3 6.2V8.6a7.8 7.8 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.7z"/>',
+  Facebook: '<path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>',
+};
+
+export function socialLinks(extraClass = '') {
+  if (!site.social.length) return '';
+  return `<ul class="socials ${extraClass}">${site.social
+    .map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener me" aria-label="${esc(site.name)} on ${esc(s.name)}" title="${esc(s.name)} ${esc(s.handle || '')}"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">${SOCIAL_ICONS[s.name] || ''}</svg><span>${esc(s.name)}</span></a></li>`)
+    .join('')}</ul>`;
+}
+
 function header(path) {
   const cur = (p) => (path === p ? ' aria-current="page"' : '');
   return `
@@ -144,6 +157,7 @@ function footer() {
         <p class="big"><a href="tel:${site.phoneHref}">${site.phone}</a></p>
         <p><a href="mailto:${site.email}">${site.email}</a></p>
         <ul>${site.hours.map((h) => `<li class="muted">${h.days}: ${h.time}</li>`).join('')}</ul>
+        ${socialLinks()}
       </div>
       <div>
         <h3>Services</h3>
@@ -169,7 +183,6 @@ function footer() {
           <li><a href="/accessibility/">Accessibility</a></li>
           <li><a href="/sitemap/">Sitemap</a></li>
         </ul>
-        ${site.social.length ? `<h3 style="margin-top:28px">Follow</h3><ul>${site.social.map((s) => `<li><a href="${s.url}" rel="noopener" target="_blank">${esc(s.name)}</a></li>`).join('')}</ul>` : ''}
       </div>
     </div>
     <div class="footer-word" aria-hidden="true">COATFORM</div>
