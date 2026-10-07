@@ -194,7 +194,7 @@ export function crumbsHtml(crumbs) {
 /**
  * Wrap page content in the full HTML document with all SEO tags.
  */
-export function layout({ title, description, path, body, schema = [], crumbs, noindex = false, maps = false, scripts = '', ogType = 'website' }) {
+export function layout({ title, description, path, body, schema = [], crumbs, noindex = false, scripts = '', ogType = 'website' }) {
   const url = abs(path);
   const graph = [businessSchema(), {
     '@type': 'WebSite',
@@ -263,7 +263,6 @@ ${integrations.bingSiteVerification ? `<meta name="msvalidate.01" content="${int
 <link rel="stylesheet" href="${fonts}">
 <link rel="preload" as="image" href="/assets/img/logo-white-480.webp">
 <link rel="stylesheet" href="/assets/css/style.css?v=${BUILD}">
-${maps ? '<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css">' : ''}
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
 <script>window.CF=${JSON.stringify({ phone: site.phone, phoneHref: site.phoneHref, email: site.email, formEndpoint: site.formEndpoint })};</script>
 ${ga}
@@ -274,7 +273,6 @@ ${header(path)}
 ${body}
 </main>
 ${footer()}
-${maps ? `<script src="/assets/vendor/leaflet/leaflet.js"></script><script>window.CF_CITIES=${JSON.stringify(cities.map(({ slug, name, lat, lng }) => ({ slug, name, lat, lng })))};</script>` : ''}
 <script src="/assets/js/main.js?v=${BUILD}" defer></script>
 ${scripts}
 </body>
@@ -352,6 +350,12 @@ export function quickForm({ city = '', service = '', light = true, title = 'Get 
   <button class="btn btn--lg btn--block" type="submit">Send my request →</button>
   <div class="form-status" role="status" aria-live="polite"></div>
 </form>`;
+}
+
+// Live Google Map (embed — no API key needed, always loads).
+export function mapEmbed({ q, zoom = 11, label, sm = false }) {
+  const src = `https://maps.google.com/maps?q=${encodeURIComponent(q)}&z=${zoom}&output=embed`;
+  return `<div class="map${sm ? ' map--sm' : ''} reveal" role="region" aria-label="${esc(label)}"><iframe src="${src}" title="${esc(label)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`;
 }
 
 export { cityOptions, serviceOptions };

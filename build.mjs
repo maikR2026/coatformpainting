@@ -1,6 +1,6 @@
 // Static site generator for coatformpainting.ca — run `node build.mjs`.
 // Output goes to ./site (deploy that folder). No framework, no runtime deps.
-import { mkdirSync, writeFileSync, rmSync, cpSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, cpSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { site } from './src/data/site.mjs';
 import { services, serviceGroups } from './src/data/services.mjs';
@@ -9,7 +9,7 @@ import { posts } from './src/data/posts.mjs';
 import { legalPages } from './src/pages/legal.mjs';
 import { SERVICES as ESTIMATOR_SERVICES } from './src/assets/js/pricing.js';
 import {
-  layout, esc, abs, crumbsHtml, ctaBand, faqBlock, serviceCard, quickForm, faqSchema, BUSINESS_ID, cityOptions, serviceOptions,
+  layout, esc, abs, crumbsHtml, ctaBand, faqBlock, serviceCard, quickForm, faqSchema, BUSINESS_ID, cityOptions, serviceOptions, mapEmbed,
 } from './src/templates.mjs';
 
 const OUT = 'site';
@@ -121,7 +121,7 @@ const trendSwatches = [
     <h2>Painting the whole <span class="serif copper">GTA</span></h2>
     <p class="muted">Tap a pin to see local painting services in your city. Don’t see yours? Call us — we probably cover it.</p>
   </div>
-  <div class="map reveal" data-map='{}' role="region" aria-label="Map of Coatform Painting service areas"></div>
+  ${mapEmbed({ q: 'Greater Toronto Area, ON, Canada', zoom: 8, label: 'Map of Coatform Painting service areas across the GTA' })}
   <ul class="pill-list" style="margin-top:28px">
     ${cities.map((c) => `<li><a href="/service-areas/${c.slug}/">📍 ${esc(c.name)} painters</a></li>`).join('')}
   </ul>
@@ -153,7 +153,6 @@ ${ctaBand('Let’s make your walls the main character.')}`;
     description: 'Toronto & GTA painters for interior, exterior, cabinet, condo & commercial painting. Free quotes, instant AI estimates, written warranty. 416-786-1621.',
     path: '/',
     body,
-    maps: true,
     schema: [faqSchema(generalFaqs.slice(0, 6))],
   }), { priority: 1.0, changefreq: 'weekly' });
 }
@@ -275,7 +274,7 @@ ${ctaBand()}`;
   <p class="lede">From Barrie to Hamilton, Kitchener to Pickering — Coatform Painting covers ${cities.length} cities across Toronto, the GTA and Southern Ontario. Explore the live map or pick your city.</p>
 </div></section>
 <section class="section--tight"><div class="wrap">
-  <div class="map reveal" data-map='{}' role="region" aria-label="Live map of all Coatform Painting service areas"></div>
+  ${mapEmbed({ q: 'Greater Toronto Area, ON, Canada', zoom: 8, label: 'Live map of all Coatform Painting service areas' })}
 </div></section>
 <section class="section--tight"><div class="wrap">
   <div class="grid grid-4">
@@ -289,7 +288,6 @@ ${ctaBand('Don’t see your city? We probably still cover it.')}`;
     path: '/service-areas/',
     body,
     crumbs,
-    maps: true,
     schema: [{
       '@type': 'ItemList',
       itemListElement: cities.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/service-areas/${c.slug}/`), name: `Painters in ${c.name}` })),
@@ -332,7 +330,7 @@ for (const c of cities) {
 </div></section>
 
 <section class="section--tight"><div class="wrap">
-  <div class="map map--sm reveal" data-map='${JSON.stringify({ center: [c.lat, c.lng], zoom: c.zoom, focus: c.slug })}' role="region" aria-label="Map of ${esc(c.name)} painting service area"></div>
+  ${mapEmbed({ q: `${c.name}, ON, Canada`, zoom: c.zoom, label: `Map of ${c.name}, Ontario painting service area`, sm: true })}
 </div></section>
 
 <section class="section--tight"><div class="wrap split">
@@ -377,7 +375,6 @@ ${ctaBand(`Ready to paint in ${esc(c.name)}?`)}`;
     path,
     body,
     crumbs,
-    maps: true,
     schema: [
       {
         '@type': 'Service',
@@ -654,12 +651,12 @@ ${ctaBand(`Ready to paint in ${esc(c.name)}?`)}`;
   </aside>
 </div></section>
 <section class="section--tight"><div class="wrap">
-  <div class="map reveal" data-map='{}' role="region" aria-label="Map of Coatform Painting service areas"></div>
+  ${mapEmbed({ q: 'Greater Toronto Area, ON, Canada', zoom: 8, label: 'Map of Coatform Painting service areas across the GTA' })}
 </div></section>`;
   emit(path, layout({
     title: 'Contact Coatform Painting | 416-786-1621 | Toronto & GTA Painters',
     description: `Contact Coatform Painting: call or text ${site.phone} or email ${site.email}. Painters serving Toronto & the GTA.`,
-    path, body, crumbs, maps: true,
+    path, body, crumbs,
     schema: [{ '@type': 'ContactPage', url: abs(path), mainEntity: { '@id': BUSINESS_ID } }],
   }), { priority: 0.8 });
 }
@@ -823,14 +820,6 @@ emit('/404.html', layout({
 // =========================================================== static files
 cpSync('src/assets', join(OUT, 'assets'), { recursive: true });
 cpSync('src/favicon.ico', join(OUT, 'favicon.ico'));
-if (existsSync('node_modules/leaflet/dist')) {
-  mkdirSync(join(OUT, 'assets/vendor/leaflet'), { recursive: true });
-  for (const f of ['leaflet.js', 'leaflet.css']) cpSync(join('node_modules/leaflet/dist', f), join(OUT, 'assets/vendor/leaflet', f));
-  cpSync('node_modules/leaflet/dist/images', join(OUT, 'assets/vendor/leaflet/images'), { recursive: true });
-} else {
-  throw new Error('Run `npm install` first (leaflet is needed for the maps).');
-}
-
 const today = new Date().toISOString().slice(0, 10);
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

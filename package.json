@@ -9,8 +9,9 @@
     "serve": "node build.mjs && npx --yes serve site -l 4321"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.131.0",
-    "leaflet": "1.9.4"
+    "@anthropic-ai/sdk": "^0.131.0"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }
