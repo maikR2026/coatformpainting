@@ -1,4 +1,4 @@
-import { site, integrations } from './data/site.mjs';
+import { site, integrations, promo } from './data/site.mjs';
 import { services } from './data/services.mjs';
 import { cities } from './data/cities.mjs';
 
@@ -112,7 +112,9 @@ function header(path) {
 <header class="site-header">
   <div class="topbar"><div class="wrap">
     <span>📞 <a href="tel:${site.phoneHref}"><strong>${site.phone}</strong></a> <span class="hide-sm">· ✉️ <a href="mailto:${site.email}">${site.email}</a></span></span>
-    <span><a href="/free-quote/">✨ Free AI estimate in 60 seconds →</a></span>
+    ${promo.active
+      ? `<span><a href="/#founding-50">🏠 ${promo.name}: your smallest room free · <strong>${promo.total - promo.claimed} spots left</strong> →</a></span>`
+      : '<span><a href="/free-quote/">✨ Free AI estimate in 60 seconds →</a></span>'}
   </div></div>
   <nav class="wrap nav" aria-label="Main">
     <a class="logo" href="/" aria-label="${site.name} home"><img src="/assets/img/logo-white-480.webp" alt="${site.name} logo" width="480" height="127"></a>
@@ -323,6 +325,38 @@ export function faqBlock(faqs, heading = 'Questions? Answered.', cream = true) {
   </div>
   <div class="faq">
     ${faqs.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}
+  </div>
+</div></section>`;
+}
+
+export function promoBlock() {
+  if (!promo.active) return '';
+  const left = promo.total - promo.claimed;
+  const pct = Math.round((promo.claimed / promo.total) * 100);
+  const min = `$${promo.minJob.toLocaleString('en-CA')}`;
+  return `
+<section class="section--tight" id="founding-50"><div class="wrap">
+  <div class="promo reveal">
+    <div class="sticker promo-sticker">${left}<br>spots<br>left</div>
+    <div class="promo-copy">
+      <p class="eyebrow">${promo.name} Homes · Limited</p>
+      <h2>Your smallest room, <span class="serif">painted free.</span></h2>
+      <p class="lede">Book any project over ${min} and we paint a bathroom, powder room or hallway at no charge. Don’t love the colour? Tell us within ${promo.guaranteeDays} days and we repaint that room free.</p>
+      <div class="row">
+        <a class="btn btn--lg" href="/free-quote/?promo=founding-50">Claim my spot →</a>
+        <a class="btn btn--ghost btn--lg" href="tel:${site.phoneHref}">📞 ${site.phone}</a>
+      </div>
+    </div>
+    <div class="promo-meter" role="img" aria-label="${promo.claimed} of ${promo.total} ${promo.name} spots claimed, ${left} left">
+      <div class="promo-count"><strong data-count="${promo.claimed}">${promo.claimed}</strong><span>/ ${promo.total} claimed</span></div>
+      <div class="promo-bar"><span style="--pct:${pct}%"></span></div>
+      <p class="promo-left">Only <strong>${left}</strong> founding spots left</p>
+      <ul class="promo-terms">
+        <li>Free room on projects over ${min} before tax</li>
+        <li>${promo.guaranteeDays}-day love-the-colour repaint, paint and labour included</li>
+        <li>One per household, while spots last</li>
+      </ul>
+    </div>
   </div>
 </div></section>`;
 }

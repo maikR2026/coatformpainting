@@ -41,6 +41,28 @@
     els.forEach((el) => el.classList.add('in'));
   }
 
+  // ---- Founding 50 counter: count up and fill the bar when it scrolls into view ----
+  const promo = document.querySelector('.promo-meter');
+  if (promo) {
+    const num = promo.querySelector('[data-count]');
+    const target = Number(num.dataset.count);
+    const run = () => {
+      promo.classList.add('go');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const t0 = performance.now();
+      const tick = (t) => {
+        const k = Math.min(1, (t - t0) / 1200);
+        num.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if ('IntersectionObserver' in window) {
+      const pio = new IntersectionObserver(([en]) => { if (en.isIntersecting) { run(); pio.disconnect(); } }, { threshold: 0.4 });
+      pio.observe(promo);
+    } else run();
+  }
+
   // ---- lead forms (booking / contact) ----
   window.CFsendLead = async function sendLead(data, subject) {
     const payload = {
