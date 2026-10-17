@@ -8,9 +8,10 @@ export const site = {
   email: 'info@coatformpainting.ca',
   // Forms are delivered to this inbox via FormSubmit (https://formsubmit.co).
   // The first submission sends a one-time activation email to this address.
-  formEndpoint: 'https://formsubmit.co/ajax/info@coatformpainting.ca',
+  // Leads go to Gmail until the info@ mailbox is set up; then swap these two.
+  formEndpoint: 'https://formsubmit.co/ajax/maik.rozenberg1@gmail.com',
   // Every lead email is also CC'd here (comma-separate to add more).
-  leadCc: 'maik.rozenberg1@gmail.com',
+  leadCc: 'info@coatformpainting.ca',
   region: 'Toronto & the Greater Toronto Area',
   tagline: 'Fresh coats. Clean lines. Zero stress.',
   description:
