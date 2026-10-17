@@ -279,7 +279,7 @@ ${integrations.bingSiteVerification ? `<meta name="msvalidate.01" content="${int
 <link rel="preload" as="image" href="/assets/img/logo-white-480.webp">
 <link rel="stylesheet" href="/assets/css/style.css?v=${BUILD}">
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
-<script>window.CF=${JSON.stringify({ phone: site.phone, phoneHref: site.phoneHref, email: site.email, formEndpoint: site.formEndpoint })};</script>
+<script>window.CF=${JSON.stringify({ phone: site.phone, phoneHref: site.phoneHref, email: site.email, formEndpoint: site.formEndpoint, leadCc: site.leadCc })};</script>
 ${ga}
 </head>
 <body>
