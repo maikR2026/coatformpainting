@@ -825,6 +825,7 @@ emit('/404.html', layout({
 // =========================================================== static files
 cpSync('src/assets', join(OUT, 'assets'), { recursive: true });
 cpSync('src/favicon.ico', join(OUT, 'favicon.ico'));
+cpSync('src/googlec74850dea3842325.html', join(OUT, 'googlec74850dea3842325.html')); // Google Search Console verification
 const today = new Date().toISOString().slice(0, 10);
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
