@@ -39,3 +39,14 @@ export const integrations = {
   googleSiteVerification: '', // from Google Search Console
   bingSiteVerification: '', // from Bing Webmaster Tools
 };
+
+// Founding 50 promotion. To update the counter, change `claimed` to the number
+// of spots booked so far and redeploy. Set `active: false` to hide it everywhere.
+export const promo = {
+  active: true,
+  name: 'Founding 50',
+  total: 50,
+  claimed: 17,
+  minJob: 1500, // pre-tax job total needed to qualify, in CAD
+  guaranteeDays: 7,
+};

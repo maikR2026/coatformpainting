@@ -201,7 +201,8 @@ form.addEventListener('submit', async (e) => {
     paintProvided: data.paintProvided === 'yes' ? 'YES — customer supplies paint' : 'No — Coatform supplies paint',
     paintGrade: data.paintProvided === 'yes' ? 'n/a' : data.paintGrade, timeline: data.timeline, details: data.details,
     estimateShown: `${money(result.low)} – ${money(result.high)} (${result.source === 'ai' ? 'AI' : 'formula'})`,
+    promo: params.get('promo') === 'founding-50' ? 'YES — wants a Founding 50 spot' : 'No',
     consent: data.consent,
-  }, `💰 New estimate request — ${SERVICES[data.service].label} in ${data.city}`).catch(() => {});
+  }, `💰 ${params.get('promo') === 'founding-50' ? '[Founding 50] ' : ''}New estimate request — ${SERVICES[data.service].label} in ${data.city}`).catch(() => {});
   if (window.gtag) window.gtag('event', 'generate_lead', { form: 'estimator', value: result.low, currency: 'CAD' });
 });

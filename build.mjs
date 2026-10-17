@@ -9,7 +9,7 @@ import { posts } from './src/data/posts.mjs';
 import { legalPages } from './src/pages/legal.mjs';
 import { SERVICES as ESTIMATOR_SERVICES } from './src/assets/js/pricing.js';
 import {
-  layout, esc, abs, crumbsHtml, ctaBand, faqBlock, serviceCard, quickForm, faqSchema, BUSINESS_ID, cityOptions, serviceOptions, mapEmbed, socialLinks,
+  layout, esc, abs, crumbsHtml, ctaBand, faqBlock, serviceCard, quickForm, faqSchema, BUSINESS_ID, cityOptions, serviceOptions, mapEmbed, socialLinks, promoBlock,
 } from './src/templates.mjs';
 
 const OUT = 'site';
@@ -68,6 +68,8 @@ const trendSwatches = [
     ${quickForm({ title: 'Get a free quote', id: 'hero' })}
   </div>
 </div></section>
+
+${promoBlock()}
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track">
   ${[...services, ...services].map((s) => `<span>${esc(s.name)}</span>`).join('')}

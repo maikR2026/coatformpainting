@@ -462,3 +462,30 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .contact-cards a { text-decoration: none; }
 .contact-cards .card strong { font: 800 clamp(1.4rem, 3vw, 2rem)/1.1 var(--font-display); letter-spacing: -0.03em; word-break: break-word; }
 .notfound h1 { font-size: clamp(5rem, 20vw, 14rem); }
+
+/* ---------- Founding 50 promo ---------- */
+.promo {
+  position: relative; display: grid; grid-template-columns: 1.25fr .9fr; gap: clamp(24px, 4vw, 50px); align-items: center;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(28px, 5vw, 60px);
+  box-shadow: inset 0 0 0 2px rgba(224, 122, 63, 0.35);
+}
+@media (max-width: 860px) { .promo { grid-template-columns: 1fr; } }
+.promo h2 { max-width: 14ch; }
+.promo h2 .serif { color: var(--copper-hi); }
+.promo .row { display: flex; gap: 14px; flex-wrap: wrap; }
+.promo-sticker { top: -40px; right: 24px; }
+@media (max-width: 560px) { .promo-sticker { top: -34px; right: 8px; width: 92px; height: 92px; font-size: .76rem; } }
+.promo-meter { background: var(--cream); color: var(--ink-text); border-radius: var(--radius); padding: 28px; transform: rotate(-1deg); }
+.promo-count { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-display); }
+.promo-count strong { font-size: clamp(3.4rem, 8vw, 5rem); line-height: 1; letter-spacing: -0.05em; color: var(--copper); }
+.promo-count span { font-weight: 700; font-size: 1.1rem; color: var(--ink-muted); }
+.promo-bar { height: 14px; border-radius: 99px; background: var(--cream-2); overflow: hidden; margin: 16px 0 12px; }
+.promo-bar span { display: block; height: 100%; width: var(--pct); background: linear-gradient(90deg, var(--copper), var(--copper-hi)); border-radius: inherit; }
+@media (prefers-reduced-motion: no-preference) {
+  .promo-bar span { width: 0; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .promo-meter.go .promo-bar span { width: var(--pct); }
+}
+.promo-left { font-weight: 700; margin: 0 0 14px; }
+.promo-left strong { color: var(--copper); }
+.promo-terms { list-style: none; padding: 0; margin: 0; font-size: .88rem; color: var(--ink-muted); display: grid; gap: 6px; }
+.promo-terms li::before { content: '✦ '; color: var(--copper); }
