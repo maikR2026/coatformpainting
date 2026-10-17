@@ -69,6 +69,7 @@
       _subject: subject,
       _template: 'table',
       _captcha: 'false',
+      ...(cfg.leadCc ? { _cc: cfg.leadCc } : {}),
       page: location.href,
       submitted: new Date().toLocaleString('en-CA', { timeZone: 'America/Toronto' }),
       ...data,
