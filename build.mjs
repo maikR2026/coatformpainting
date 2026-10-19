@@ -728,6 +728,16 @@ ${ctaBand('Still have questions?')}`;
 }
 
 // =========================================================== BLOG
+const gallery = [
+  { file: 'dining-living', size: 'big', caption: 'Open-concept dining & living', alt: 'Bright open-concept dining and living room with white walls, a wood chandelier and bay windows' },
+  { file: 'bedroom', caption: 'Warm white bedroom', alt: 'Calm bedroom painted a warm white with dark wood furniture and round mirrors' },
+  { file: 'bathroom', caption: 'Crisp bathroom', alt: 'Bathroom with soft white walls, a white medicine cabinet and a fluted vanity' },
+  { file: 'kitchen', size: 'wide', caption: 'Kitchen & breakfast bar', alt: 'Light grey kitchen walls with white shaker cabinets and a breakfast bar' },
+  { file: 'living-room', caption: 'Sun-filled living room', alt: 'Living room with clean white walls, white trim and tall windows' },
+  { file: 'home-office', caption: 'Home office', alt: 'Small home office with fresh white walls and baseboards' },
+  { file: 'bright-bedroom', caption: 'Bright bedroom', alt: 'Empty bedroom with smooth soft white walls and white baseboards' },
+  { file: 'upstairs-hall', caption: 'Hallway & trim', alt: 'Upstairs hallway with warm white walls, white door casings and a wood handrail' },
+];
 {
   const crumbs = [home, { name: 'Blog', path: '/blog/' }];
   const body = `
@@ -740,6 +750,15 @@ ${ctaBand('Still have questions?')}`;
 <section class="section--tight"><div class="wrap"><div class="grid grid-3">
   ${posts.map((p) => `<a class="card reveal" href="/blog/${p.slug}/"><p class="eyebrow" style="margin-bottom:10px">${new Date(p.date + 'T12:00:00').toLocaleDateString('en-CA', { month: 'long', day: 'numeric', year: 'numeric' })}</p><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p><span class="arrow">Read →</span></a>`).join('')}
 </div></div></section>
+<section class="section section--cream"><div class="wrap">
+  <div class="section-head">
+    <div><p class="eyebrow">Fresh coats</p><h2>Rooms we <span class="serif">love</span> walking into</h2></div>
+    <p class="lede">Soft whites, warm greiges and crisp trim. A little inspo for your next refresh.</p>
+  </div>
+  <div class="gallery">
+    ${gallery.map((g) => `<figure class="gallery-item reveal${g.size ? ` gallery-item--${g.size}` : ''}"><img src="/assets/img/gallery/${g.file}-1200.webp" srcset="/assets/img/gallery/${g.file}-640.webp 640w, /assets/img/gallery/${g.file}-1200.webp 1171w" sizes="${g.size === 'big' ? '(max-width: 900px) 100vw, 600px' : '(max-width: 900px) 50vw, 300px'}" alt="${esc(g.alt)}" width="1171" height="750" loading="lazy" decoding="async"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('')}
+  </div>
+</div></section>
 ${ctaBand()}`;
   emit('/blog/', layout({
     title: 'Painting Blog | Costs, Tips & Colour Ideas | Coatform Painting',
