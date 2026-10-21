@@ -234,8 +234,21 @@
     if (e.target.closest('[data-open-chat]')) { e.preventDefault(); setOpen(true); }
   });
 
+  // Lets other page code (e.g. the /links/ page) open the chat or ask a question.
+  window.CFchat = { open: () => setOpen(true), ask: (text) => { setOpen(true); ask(text); } };
+
   renderAll();
   if (state.open) setOpen(true);
+  // Deep links from social posts: ?chat=1 opens the assistant, ?ask=... also sends a question.
+  const params = new URLSearchParams(location.search);
+  if (params.has('chat') || params.has('ask')) {
+    const q = (params.get('ask') || '').slice(0, 300);
+    params.delete('chat');
+    params.delete('ask');
+    history.replaceState(null, '', location.pathname + (params.size ? `?${params}` : '') + location.hash);
+    setOpen(true);
+    if (q && !state.shown.length) ask(q);
+  }
   // Friendly nudge after a little browsing, once per visit.
   if (!state.teased && !state.open) {
     setTimeout(() => { if (panel.hidden && !state.teased) tease.hidden = false; }, 12000);

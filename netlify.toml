@@ -13,6 +13,28 @@
   status = 301
   force = true
 
+# Short links for social media bios and posts. Each one tags the visit so lead
+# emails show where the person came from ("cameFrom"). /price opens Coaty.
+[[redirects]]
+  from = "/ig"
+  to = "/links/?utm_source=instagram&utm_medium=bio"
+  status = 302
+
+[[redirects]]
+  from = "/fb"
+  to = "/links/?utm_source=facebook&utm_medium=bio"
+  status = 302
+
+[[redirects]]
+  from = "/tt"
+  to = "/links/?utm_source=tiktok&utm_medium=bio"
+  status = 302
+
+[[redirects]]
+  from = "/price"
+  to = "/links/?chat=1&utm_source=social&utm_medium=post"
+  status = 302
+
 [[headers]]
   for = "/*"
   [headers.values]
