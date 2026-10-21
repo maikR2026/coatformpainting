@@ -102,7 +102,7 @@ ${contact}`,
 </ul>
 <p>Some providers may store or process data outside Canada (for example in the United States), where it may be subject to local laws.</p>
 <h2>5. Cookies</h2>
-<p>Our site does not use advertising cookies. If we enable analytics (such as Google Analytics), it may use cookies to understand how visitors use the site. You can block or delete cookies in your browser settings.</p>
+<p>We use the Meta Pixel (from Meta, the company behind Facebook and Instagram). It sets cookies that tell us when someone visits our site or sends us an enquiry after seeing our ads or posts, so we can measure and improve our advertising and show ads to people likely to be interested. Meta may combine this with information it already has about you under its own <a href="https://www.facebook.com/privacy/policy/" rel="noopener">privacy policy</a>. We do not send Meta the details you type into our forms or chat. If we enable analytics (such as Google Analytics), it may also use cookies. You can block or delete cookies in your browser settings, and manage ad preferences in your Facebook and Instagram settings.</p>
 <h2>6. How long we keep it</h2>
 <p>We keep enquiry information for up to 2 years, and customer and job records for up to 7 years for tax, accounting and warranty purposes, then securely delete them.</p>
 <h2>7. Security</h2>

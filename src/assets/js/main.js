@@ -77,6 +77,11 @@
   } catch {}
   const leadSource = () => { try { return sessionStorage.getItem(SRC_KEY) || ''; } catch { return ''; } };
 
+  // ---- Meta Pixel: count taps on the phone number as a Contact ----
+  document.addEventListener('click', (e) => {
+    if (window.fbq && e.target.closest('a[href^="tel:"], a[href^="sms:"]')) window.fbq('track', 'Contact');
+  });
+
   // ---- lead forms (booking / contact) ----
   window.CFsendLead = async function sendLead(data, subject) {
     const payload = {
@@ -95,6 +100,7 @@
       body: JSON.stringify(payload),
     });
     if (!res.ok) throw new Error('Form send failed');
+    if (window.fbq) window.fbq('track', 'Lead', { content_name: data.source || subject });
     return res.json().catch(() => ({}));
   };
 
