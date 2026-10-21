@@ -289,6 +289,7 @@ ${body}
 </main>
 ${footer()}
 <script src="/assets/js/main.js?v=${BUILD}" defer></script>
+<script src="/assets/js/chat.js?v=${BUILD}" defer></script>
 ${scripts}
 </body>
 </html>`;

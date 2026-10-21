@@ -14,17 +14,17 @@ export const posts = [
 <p>“How much will it cost?” is the first question everyone asks — and fair enough. Here are <strong>typical 2026 price ranges</strong> we see for professional painting across Toronto and the GTA, plus what actually moves the number. Want a number for <em>your</em> project? Try our <a href="/free-quote/">free AI estimator</a>.</p>
 <h2>Interior painting cost in Toronto</h2>
 <ul>
-  <li><strong>Average bedroom (walls only):</strong> about $400–$650</li>
-  <li><strong>Bedroom with ceiling, trim and door:</strong> about $650–$1,100</li>
-  <li><strong>Living room / open-concept main floor:</strong> about $1,200–$3,500</li>
-  <li><strong>Whole interior of a typical 3-bedroom home:</strong> about $5,000–$12,000</li>
-  <li><strong>1–2 bedroom condo:</strong> about $1,800–$4,500</li>
+  <li><strong>Average bedroom (walls only):</strong> about $250–$350</li>
+  <li><strong>Bedroom with ceiling, trim and door:</strong> about $450–$750</li>
+  <li><strong>Living room / open-concept main floor:</strong> about $700–$2,000</li>
+  <li><strong>Whole interior of a typical 3-bedroom home:</strong> about $3,000–$7,000</li>
+  <li><strong>1–2 bedroom condo:</strong> about $1,100–$2,700</li>
 </ul>
-<p>As a rule of thumb, whole-home interiors land between <strong>$3 and $6 per square foot of floor area</strong> depending on how much is included.</p>
+<p>As a rule of thumb, whole-home interiors land between <strong>$2 and $3.50 per square foot of floor area</strong> depending on how much is included.</p>
 <h2>Exterior painting cost</h2>
 <p>Most detached homes in the GTA cost between <strong>$4,500 and $14,000</strong> to paint outside. Bungalows sit at the lower end; tall two- and three-storey homes with lots of trim, or homes needing heavy scraping, sit at the top.</p>
 <h2>Kitchen cabinet painting cost</h2>
-<p>Expect roughly <strong>$110–$190 per door or drawer front</strong>, or about <strong>$3,500–$8,500</strong> for an average kitchen. That is a fraction of the $20,000+ many people pay for new cabinets.</p>
+<p>Expect roughly <strong>$70–$115 per door or drawer front</strong>, or about <strong>$2,000–$3,500</strong> for an average kitchen. That is a fraction of the $20,000+ many people pay for new cabinets.</p>
 <h2>What changes the price?</h2>
 <ol>
   <li><strong>Prep and repairs.</strong> Holes, cracks, peeling paint and water stains add time. Older Toronto homes with plaster usually need more prep.</li>
@@ -80,7 +80,7 @@ export const posts = [
 <p>Dated kitchen but solid cabinets? Painting them can deliver a <strong>“new kitchen” look for roughly 15–30% of the cost</strong> of replacement. Here is how to decide.</p>
 <h2>Cost comparison</h2>
 <ul>
-  <li><strong>Professional cabinet painting:</strong> about $3,500–$8,500 for an average GTA kitchen.</li>
+  <li><strong>Professional cabinet painting:</strong> about $2,000–$3,500 for an average GTA kitchen.</li>
   <li><strong>New cabinets (installed):</strong> often $15,000–$40,000+ once you add removal, countertops and backsplash work.</li>
 </ul>
 <h2>Paint them if…</h2>
