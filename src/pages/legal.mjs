@@ -96,6 +96,7 @@ ${contact}`,
 <ul>
   <li><strong>Form delivery:</strong> website forms are delivered to our inbox by a third-party form-processing service (FormSubmit).</li>
   <li><strong>AI estimator:</strong> the project details you enter in the free estimator (not your name, phone or email) are sent to an AI provider (Anthropic) to generate a rough price range.</li>
+  <li><strong>AI chat assistant:</strong> messages you type into the chat assistant on our website, including any contact details you choose to share there, are processed by an AI provider (Anthropic) to generate replies. A copy of the conversation is emailed to us so we can follow up.</li>
   <li><strong>Website hosting, maps and fonts:</strong> our host, OpenStreetMap/CARTO map tiles and Google Fonts receive standard technical data (like your IP address) when pages load.</li>
   <li><strong>Email, accounting and payment providers</strong> used to run our business.</li>
 </ul>
