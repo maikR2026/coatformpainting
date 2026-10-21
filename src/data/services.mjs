@@ -24,10 +24,10 @@ export const services = [
       'Low-VOC, low-odour premium paints',
       'Daily tidy-up and final walkthrough',
     ],
-    price: 'Typically $450–$900 per average room, or $3–$6 per sq ft of floor area for whole-home repaints.',
+    price: 'Around $300 per average room (walls only, about $250–$350), more with ceilings, trim and doors, or about $2–$3.50 per sq ft of floor area for whole-home repaints.',
     keywords: ['interior painters Toronto', 'house painters GTA', 'room painting cost Toronto', 'interior painting company near me'],
     faqs: [
-      { q: 'How much does it cost to paint a room in Toronto?', a: 'Most standard bedrooms (around 12×12 ft, 8 ft ceilings) cost roughly $450–$900 depending on whether ceilings, trim and doors are included, the condition of the walls and the paint you choose. Use our free AI estimator for a rough number, then call 416-786-1621 for an exact quote.' },
+      { q: 'How much does it cost to paint a room in Toronto?', a: 'Most standard bedrooms (around 12×12 ft, 8 ft ceilings) cost around $300 for the walls (roughly $250–$350), plus extra if you add ceilings, trim and doors, depending on the condition of the walls and the paint you choose. Use our free AI estimator for a rough number, then call 416-786-1621 for an exact quote.' },
       { q: 'How long does interior painting take?', a: 'A single room usually takes one day. A typical 3-bedroom home interior takes 3–6 days depending on prep work, ceilings and trim.' },
       { q: 'Do I need to move my furniture?', a: 'No. We move and cover furniture for you. We just ask that you put away valuables, fragile décor and anything personal on the walls.' },
       { q: 'Can I supply my own paint?', a: 'Yes. If you supply the paint we will reduce your price accordingly. We will confirm the quantity and type with you ahead of time so there are no delays.' },
@@ -87,7 +87,7 @@ export const services = [
       'Optional hardware swap and hinge upgrades',
       'Full kitchen protection & dust control',
     ],
-    price: 'Typically $3,500–$8,500 for an average kitchen ($110–$190 per door/drawer front).',
+    price: 'Typically $2,000–$3,500 for an average kitchen ($70–$115 per door/drawer front).',
     keywords: ['kitchen cabinet painting Toronto', 'cabinet refinishing GTA', 'paint kitchen cabinets cost', 'cabinet sprayers Mississauga'],
     faqs: [
       { q: 'How long does cabinet painting take?', a: 'Most kitchens take 5–8 working days including cure time between coats. You can usually still use your kitchen during the process.' },
@@ -118,7 +118,7 @@ export const services = [
       'Builder-grade to designer colour upgrades',
       'Spotless clean-up of shared areas',
     ],
-    price: 'Typically $1,800–$4,500 for a 1–2 bedroom condo.',
+    price: 'Typically $1,100–$2,700 for a 1–2 bedroom condo.',
     keywords: ['condo painting Toronto', 'condo painters downtown Toronto', 'apartment painters GTA', 'rental turnover painting'],
     faqs: [
       { q: 'Can you provide a certificate of insurance for my building?', a: 'Yes — let us know your property manager’s requirements when you book and we will send the documents they need before work begins.' },
@@ -208,7 +208,7 @@ export const services = [
       'Corner bead & tape repairs',
       'Primed and ready for paint',
     ],
-    price: 'Small repairs typically start around $250–$450; skim coating ~$2–$4 per sq ft of wall.',
+    price: 'Small repairs typically start around $125–$250; skim coating ~$1.25–$2.50 per sq ft of wall.',
     keywords: ['drywall repair Toronto', 'plaster repair GTA', 'skim coating Toronto', 'wall crack repair'],
     faqs: [
       { q: 'Do you only do drywall repair if I hire you to paint?', a: 'No — we take stand-alone repair jobs too, though most clients pair repairs with painting for a seamless finish.' },
@@ -238,7 +238,7 @@ export const services = [
       'Pot-light friendly smooth finish',
       'Guidance on asbestos testing for older homes',
     ],
-    price: 'Typically $3.50–$7.00 per sq ft including skim coat and paint.',
+    price: 'Typically $2–$4 per sq ft including skim coat and paint.',
     keywords: ['popcorn ceiling removal Toronto', 'stucco ceiling removal GTA', 'smooth ceiling Mississauga', 'popcorn ceiling removal cost'],
     faqs: [
       { q: 'Is popcorn ceiling removal messy?', a: 'It can be — that is why we fully contain each room with plastic and use dust-controlled sanding. You get a smooth ceiling without the house-wide mess.' },
@@ -267,7 +267,7 @@ export const services = [
       'Skim coat where needed',
       'Prime & paint in your new colour',
     ],
-    price: 'Typically $1.50–$4.00 per sq ft of wall for removal and prep.',
+    price: 'Typically $275–$575 per room for removal and prep.',
     keywords: ['wallpaper removal Toronto', 'wallpaper stripping GTA', 'remove wallpaper and paint'],
     faqs: [
       { q: 'Can you paint over wallpaper?', a: 'It is possible but rarely a good long-term idea — seams and bubbles show through. Removing it properly gives a much better result.' },
@@ -296,7 +296,7 @@ export const services = [
       'Caulking & nail-hole filling',
       'Durable satin/semi-gloss enamels',
     ],
-    price: 'Doors typically $90–$180 each; baseboards about $1.50–$3.00 per linear ft.',
+    price: 'Doors typically $50–$100 each; baseboards about $1–$2 per linear ft.',
     keywords: ['door painting Toronto', 'baseboard painting GTA', 'trim painters near me', 'front door painting'],
     faqs: [
       { q: 'Can you paint oak trim white?', a: 'Yes — with a stain-blocking primer to stop tannins bleeding through, followed by two coats of enamel.' },
@@ -324,7 +324,7 @@ export const services = [
       'Stripes, panels & kids’ rooms',
       'Help choosing colours',
     ],
-    price: 'Typically $250–$800 per feature wall depending on complexity.',
+    price: 'Typically $150–$450 per feature wall depending on complexity.',
     keywords: ['accent wall painting Toronto', 'painted arch wall', 'feature wall painters GTA', 'colour drenching'],
     faqs: [
       { q: 'Can you paint an arch on my wall?', a: 'Yes! Painted arches are one of our most-requested feature walls. We lay them out precisely and finish them with razor-sharp edges.' },
@@ -435,7 +435,7 @@ export const services = [
       'Two-tone stair designs',
       'Oak to black or white transformations',
     ],
-    price: 'Typically $1,200–$3,500 per staircase.',
+    price: 'Typically $700–$2,100 per staircase.',
     keywords: ['staircase painting Toronto', 'railing painting GTA', 'paint oak railing black', 'spindle painting'],
     faqs: [
       { q: 'Can you paint stained oak railings black?', a: 'Yes. After a thorough scuff sand and bonding primer, we apply a durable enamel for a sleek modern look.' },
@@ -463,7 +463,7 @@ export const services = [
       'Touch-ups & repairs',
       'Neutral, buyer-friendly colour advice',
     ],
-    price: 'Most turnovers range from $1,500 to $6,000 depending on size.',
+    price: 'Most turnovers range from $900 to $3,600 depending on size.',
     keywords: ['painting before selling house Toronto', 'rental unit painting GTA', 'move out painting', 'realtor painter Toronto'],
     faqs: [
       { q: 'How quickly can you start?', a: 'For real estate and rental clients we do our best to start within a few days. Call 416-786-1621 for the fastest booking.' },

@@ -317,7 +317,7 @@ for (const c of cities) {
   const nearby = c.nearby.map((slug) => cities.find((x) => x.slug === slug));
   const faqs = [
     c.faq,
-    { q: `How much does painting cost in ${c.name}?`, a: `Most rooms in ${c.name} cost roughly $450–$900 to paint, and full-home interiors typically range from $3–$6 per sq ft of floor area. Exteriors usually range from $4,500–$14,000. Get a free rough AI estimate online, or call ${site.phone} for an exact written quote.` },
+    { q: `How much does painting cost in ${c.name}?`, a: `Painting the walls of an average room in ${c.name} costs around $300 (roughly $250–$350), and full-home interiors typically range from $2–$3.50 per sq ft of floor area. Exteriors usually range from $4,500–$14,000. Get a free rough AI estimate online, or call ${site.phone} for an exact written quote.` },
     { q: `Do you offer free quotes in ${c.name}?`, a: `Yes. Quotes are always free in ${c.name} and across the GTA. Use our online estimator, book an appointment, or call ${site.phone}.` },
     { q: `What painting services do you offer in ${c.name}?`, a: `In ${c.name} we offer ${services.map((s) => s.name.toLowerCase()).join(', ')}.` },
     generalFaqs[2],

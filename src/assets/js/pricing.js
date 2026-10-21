@@ -2,6 +2,7 @@
 // Shared by the browser (instant fallback) and the AI estimate function (as a
 // sanity anchor). Rates are typical Toronto/GTA ranges, labour + materials.
 // Tweak RATES to match your real pricing — everything else follows.
+// Interior rates are anchored to ~$300 to paint the walls of an average room.
 
 export const SERVICES = {
   interior: { label: 'Interior painting', unit: 'rooms', paint: true },
@@ -25,26 +26,26 @@ export const SERVICES = {
 };
 
 const RATES = {
-  roomWalls: [380, 620],
-  roomCeiling: [140, 240],
-  roomTrim: [130, 260],
-  door: [90, 175],
-  baseboardFt: [1.5, 3],
+  roomWalls: [250, 350],
+  roomCeiling: [80, 140],
+  roomTrim: [80, 150],
+  door: [50, 100],
+  baseboardFt: [1, 2],
   exteriorSqft: [2.4, 4.3],
   sidingSqft: [2.0, 3.6],
   masonrySqft: [2.8, 5.0],
-  cabinetPiece: [115, 190],
-  accentWall: [250, 750],
-  staircase: [1200, 3500],
+  cabinetPiece: [70, 115],
+  accentWall: [150, 450],
+  staircase: [700, 2100],
   deckSqft: [3, 6],
   fenceFt: [8, 15],
-  popcornSqft: [3.5, 7],
-  wallpaperRoom: [450, 950],
-  drywallArea: [220, 430],
+  popcornSqft: [2, 4],
+  wallpaperRoom: [275, 575],
+  drywallArea: [125, 250],
   epoxySqft: [6, 12],
   commercialSqft: [2.5, 5],
   newConstructionSqft: [2.5, 4.5],
-  minimumJob: 400,
+  minimumJob: 200,
   paintShare: 0.17, // approx share of the price that is paint, removed when the client supplies it
 };
 
@@ -183,7 +184,7 @@ export function estimate(raw) {
   }
 
   low = Math.max(RATES.minimumJob, round50(low));
-  high = Math.max(low + 150, round50(high));
+  high = Math.max(low + 100, round50(high));
 
   return {
     low,
