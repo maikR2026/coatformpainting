@@ -39,6 +39,7 @@ export const site = {
 // Optional integrations — paste IDs here and rebuild.
 export const integrations = {
   googleAnalyticsId: '', // e.g. 'G-XXXXXXXXXX'
+  metaPixelId: '1492648386012493', // Meta (Facebook/Instagram) Pixel, from Meta Events Manager
   googleSiteVerification: '', // from Google Search Console
   bingSiteVerification: '', // from Bing Webmaster Tools
 };

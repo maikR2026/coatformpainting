@@ -2,7 +2,7 @@
 // Output goes to ./site (deploy that folder). No framework, no runtime deps.
 import { mkdirSync, writeFileSync, rmSync, cpSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { site } from './src/data/site.mjs';
+import { site, promo } from './src/data/site.mjs';
 import { services, serviceGroups } from './src/data/services.mjs';
 import { cities } from './src/data/cities.mjs';
 import { posts } from './src/data/posts.mjs';
@@ -317,7 +317,7 @@ for (const c of cities) {
   const nearby = c.nearby.map((slug) => cities.find((x) => x.slug === slug));
   const faqs = [
     c.faq,
-    { q: `How much does painting cost in ${c.name}?`, a: `Most rooms in ${c.name} cost roughly $450–$900 to paint, and full-home interiors typically range from $3–$6 per sq ft of floor area. Exteriors usually range from $4,500–$14,000. Get a free rough AI estimate online, or call ${site.phone} for an exact written quote.` },
+    { q: `How much does painting cost in ${c.name}?`, a: `Painting the walls of an average room in ${c.name} costs around $300 (roughly $250–$350), and full-home interiors typically range from $2–$3.50 per sq ft of floor area. Exteriors usually range from $4,500–$14,000. Get a free rough AI estimate online, or call ${site.phone} for an exact written quote.` },
     { q: `Do you offer free quotes in ${c.name}?`, a: `Yes. Quotes are always free in ${c.name} and across the GTA. Use our online estimator, book an appointment, or call ${site.phone}.` },
     { q: `What painting services do you offer in ${c.name}?`, a: `In ${c.name} we offer ${services.map((s) => s.name.toLowerCase()).join(', ')}.` },
     generalFaqs[2],
@@ -797,6 +797,58 @@ ${ctaBand()}`;
       }],
     }), { priority: 0.6 });
   }
+}
+
+// =========================================================== LINK IN BIO (/links/)
+// Landing page for the Instagram / Facebook / TikTok bio links. Short links in
+// netlify.toml (/ig, /fb, /tt) point here with a utm_source so every lead email
+// says which platform it came from. The main job: get people talking to Coaty.
+{
+  const path = '/links/';
+  const asks = [
+    'How much to paint my bedroom?',
+    'Price for a 2-bedroom condo?',
+    'Can I supply my own paint?',
+  ];
+  const left = promo.total - promo.claimed;
+  const body = `
+<section class="links-page"><div class="links-wrap">
+  <img class="links-logo" src="/assets/img/mark.png" alt="" width="84" height="84">
+  <h1>Coatform Painting</h1>
+  <p class="links-sub">Interior painting in Toronto & the GTA · <span class="links-stars" aria-label="5 star reviews on Google">★★★★★</span> on Google</p>
+
+  <button type="button" class="links-hero" data-open-chat>
+    <span class="links-hero__tag">Fastest way · 60 sec</span>
+    <strong>💬 Get my price now</strong>
+    <span>Chat with Coaty, our AI assistant. Rooms from $250.</span>
+  </button>
+  <div class="links-asks" aria-label="Quick questions for Coaty">
+    ${asks.map((q) => `<button type="button" data-ask="${esc(q)}">${esc(q)}</button>`).join('')}
+  </div>
+
+  <nav class="links-list" aria-label="Coatform links">
+    ${promo.active ? `<a href="/free-quote/?promo=founding-50"><span>🎁</span><b>${esc(promo.name)}: a free room on jobs over $${promo.minJob.toLocaleString('en-CA')}</b><em>${left} spots left</em></a>` : ''}
+    <a href="tel:${site.phoneHref}"><span>📞</span><b>Call ${site.phone}</b><em>A real person picks up</em></a>
+    <a href="sms:${site.phoneHref}"><span>💬</span><b>Text us a photo of your room</b><em>We’ll text back a price</em></a>
+    <a href="/book/"><span>📅</span><b>Book a free in-home estimate</b><em>Exact written quote</em></a>
+    <a href="/free-quote/"><span>✨</span><b>Online estimate form</b><em>Prefer a form? 4 quick steps</em></a>
+  </nav>
+
+  <h2 class="links-h2">Recent work</h2>
+  <div class="links-gallery">
+    ${gallery.slice(0, 6).map((g) => `<img src="/assets/img/gallery/${g.file}-640.webp" alt="${esc(g.alt)}" width="640" height="410" loading="lazy" decoding="async">`).join('')}
+  </div>
+  <a class="links-more" href="/blog/">See more on our blog →</a>
+  ${socialLinks('links-socials')}
+</div></section>
+<script>
+document.querySelectorAll('.links-asks [data-ask]').forEach((b) => b.addEventListener('click', () => window.CFchat ? window.CFchat.ask(b.dataset.ask) : location.assign('/?ask=' + encodeURIComponent(b.dataset.ask))));
+</script>`;
+  emit(path, layout({
+    title: 'Coatform Painting | Get a Painting Price in 60 Seconds',
+    description: 'Toronto & GTA interior painters. Chat with Coaty for a rough price in about a minute, call 416-786-1621, or book a free estimate.',
+    path, body, noindex: true,
+  }), { sitemap: false });
 }
 
 // =========================================================== LEGAL

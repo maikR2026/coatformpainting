@@ -63,6 +63,25 @@
     } else run();
   }
 
+  // ---- lead source: remember where this visitor first came from (e.g. ?utm_source=instagram) ----
+  const SRC_KEY = 'cf-src';
+  try {
+    const q = new URLSearchParams(location.search);
+    const src = q.get('utm_source');
+    if (src && !sessionStorage.getItem(SRC_KEY)) {
+      sessionStorage.setItem(SRC_KEY, [src, q.get('utm_medium'), q.get('utm_campaign')].filter(Boolean).join(' / ').slice(0, 120));
+    } else if (!sessionStorage.getItem(SRC_KEY)) {
+      const ref = document.referrer && new URL(document.referrer).hostname;
+      sessionStorage.setItem(SRC_KEY, ref && ref !== location.hostname ? ref : 'direct');
+    }
+  } catch {}
+  const leadSource = () => { try { return sessionStorage.getItem(SRC_KEY) || ''; } catch { return ''; } };
+
+  // ---- Meta Pixel: count taps on the phone number as a Contact ----
+  document.addEventListener('click', (e) => {
+    if (window.fbq && e.target.closest('a[href^="tel:"], a[href^="sms:"]')) window.fbq('track', 'Contact');
+  });
+
   // ---- lead forms (booking / contact) ----
   window.CFsendLead = async function sendLead(data, subject) {
     const payload = {
@@ -72,6 +91,7 @@
       ...(cfg.leadCc ? { _cc: cfg.leadCc } : {}),
       page: location.href,
       submitted: new Date().toLocaleString('en-CA', { timeZone: 'America/Toronto' }),
+      cameFrom: leadSource(),
       ...data,
     };
     const res = await fetch(cfg.formEndpoint, {
@@ -80,6 +100,7 @@
       body: JSON.stringify(payload),
     });
     if (!res.ok) throw new Error('Form send failed');
+    if (window.fbq) window.fbq('track', 'Lead', { content_name: data.source || subject });
     return res.json().catch(() => ({}));
   };
 

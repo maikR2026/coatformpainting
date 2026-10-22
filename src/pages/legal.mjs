@@ -96,12 +96,13 @@ ${contact}`,
 <ul>
   <li><strong>Form delivery:</strong> website forms are delivered to our inbox by a third-party form-processing service (FormSubmit).</li>
   <li><strong>AI estimator:</strong> the project details you enter in the free estimator (not your name, phone or email) are sent to an AI provider (Anthropic) to generate a rough price range.</li>
+  <li><strong>AI chat assistant:</strong> messages you type into the chat assistant on our website, including any contact details you choose to share there, are processed by an AI provider (Anthropic) to generate replies. A copy of the conversation is emailed to us so we can follow up.</li>
   <li><strong>Website hosting, maps and fonts:</strong> our host, OpenStreetMap/CARTO map tiles and Google Fonts receive standard technical data (like your IP address) when pages load.</li>
   <li><strong>Email, accounting and payment providers</strong> used to run our business.</li>
 </ul>
 <p>Some providers may store or process data outside Canada (for example in the United States), where it may be subject to local laws.</p>
 <h2>5. Cookies</h2>
-<p>Our site does not use advertising cookies. If we enable analytics (such as Google Analytics), it may use cookies to understand how visitors use the site. You can block or delete cookies in your browser settings.</p>
+<p>We use the Meta Pixel (from Meta, the company behind Facebook and Instagram). It sets cookies that tell us when someone visits our site or sends us an enquiry after seeing our ads or posts, so we can measure and improve our advertising and show ads to people likely to be interested. Meta may combine this with information it already has about you under its own <a href="https://www.facebook.com/privacy/policy/" rel="noopener">privacy policy</a>. We do not send Meta the details you type into our forms or chat. If we enable analytics (such as Google Analytics), it may also use cookies. You can block or delete cookies in your browser settings, and manage ad preferences in your Facebook and Instagram settings.</p>
 <h2>6. How long we keep it</h2>
 <p>We keep enquiry information for up to 2 years, and customer and job records for up to 7 years for tax, accounting and warranty purposes, then securely delete them.</p>
 <h2>7. Security</h2>
